@@ -22,8 +22,7 @@ module.exports = function (req, res, next) {
             user.validateID(verified)
             .then(r => {
                 
-                
-                console.log(r);
+             
                 if(!r){
                     return res.json({
                         msg:'Unauthorized user',
