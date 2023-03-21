@@ -56,7 +56,8 @@ class userDB{
           let token=this.generateGToken(data.id)
           return {
             token:token,
-            user:data
+            user:data,
+            msg:"Login successfull"
           }
 
     }
@@ -85,7 +86,8 @@ class userDB{
                 const token=this.generateGToken(user.id)
                 return {
                     token:token,
-                    user:user
+                    user:user,
+                    msg:"Login successfull"
                 }
             }else{
                 return {msg:"Incorrect user password"}
@@ -126,9 +128,13 @@ class userDB{
                 
             }
         })
+        if(errMsg!="") return {msg:"User not found",isHas:false}
         user=user[0]
         delete user.password
-        return user
+        return {
+            user,
+            isHas:true
+        }
     }
 
     
