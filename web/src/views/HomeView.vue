@@ -11,16 +11,22 @@
                 </div>
                 <p>id: {{ data.id }}</p>
                 <p>Email: {{ data.email }}</p>
+                <button class="logout" @click="logout">Logout</button>
             </div>
         </div>
     </main>
 </template>
 
 <script setup>
+
 import axios from 'axios'
 import {inject,ref} from 'vue'
 const token=localStorage.getItem('token')
 const route=inject('router')
+const logout=()=>{
+    localStorage.setItem('token',"")
+    route.push('/')
+}
 const data=ref('')
 if(token!=''){
     axios.get('http://localhost:8000/api/user/me', {
@@ -38,12 +44,24 @@ if(token!=''){
         }
     })
     
+}else{
+    route.push('/')
 }
 
 </script>
 
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Irish+Grover&display=swap');
+.logout{
+    padding: .5rem .7rem;
+    background-color: black;
+    color: rgb(255, 27, 27);
+    border: none;
+    font-family: 'Irish Grover', cursive;
+    font-size: 1.6rem;
+    cursor: pointer;
+    border-radius: .3rem;
+}
 main{
     width: 100%;
     display: flex;
