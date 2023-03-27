@@ -4,7 +4,8 @@ require('dotenv').config();
 
 module.exports = function (req, res, next) {
     let token = req.header('Authorization');
-    token=token.split(" ")[1]
+    if(token) token=token.split(" ")[1]
+    
     if (!token) {        
         return res.json({
             msg:'Invalid Token',

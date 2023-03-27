@@ -64,18 +64,19 @@ class userDB{
     async login(data){
         const users=await this.read()
         let errMsg="";
+        let isFine=false
         let user =users.filter(item=>{
             if(data.EUID==item.email || data.EUID==item.username){
                 errMsg=""
+                isFine=true
                 return item
             }else{
-                errMsg="Incorrect Username or Password"
+                if(!isFine) errMsg="Incorrect Username or Password" 
                 
             }
         })
         if(errMsg!="") return {msg:errMsg}
-         user=user[0]
-        // console.log(data.password, user[0].password);
+        user=user[0]
         try{
 
             const isIdenticallPass=await bcrypt.compare(data.password, user.password)
