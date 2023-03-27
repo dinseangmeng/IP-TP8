@@ -1,4 +1,4 @@
-# # Web (Authentication frontend and APIs) : VUEJS
+# Web (Authentication frontend and APIs) : VUEJS
 
 ## Customize configuration
 
