@@ -51,7 +51,7 @@
 <script setup>
 import {ref,inject,onMounted} from 'vue'
 import axios from 'axios'
-
+import store from '../store';
 
 const isShow=ref(false)
 const isValidPass=ref(false)
@@ -101,7 +101,7 @@ const save=(e)=>{
         bodyFormData.append('password',password.value)
         axios({
             method: 'post',
-            url: 'http://localhost:8000/api/user/register',
+            url: `${store.state.apiUrl}/user/register`,
             data: bodyFormData,
             headers: {'Content-Type': 'multipart/form-data' }
         }).then(res=>{

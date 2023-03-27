@@ -21,6 +21,7 @@
 
 import axios from 'axios'
 import {inject,ref} from 'vue'
+import store from '../store';
 const token=localStorage.getItem('token')
 const route=inject('router')
 const logout=()=>{
@@ -29,7 +30,7 @@ const logout=()=>{
 }
 const data=ref('')
 if(token!=''){
-    axios.get('http://localhost:8000/api/user/me', {
+    axios.get(`${store.state.apiUrl}/user/me`, {
         headers: {
             'Authorization': `${token}`
         }

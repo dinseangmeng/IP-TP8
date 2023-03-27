@@ -38,7 +38,7 @@
 <script setup>
 import {ref,inject,onMounted} from 'vue'
 import axios from 'axios'
-
+import store from '../store';
 
 const email=ref('')
 const password=ref('')
@@ -91,7 +91,7 @@ const save=(e)=>{
         bodyFormData.append('password',password.value)
         axios({
             method: 'post',
-            url: 'http://localhost:8000/api/user/login',
+            url: `${store.state.apiUrl}/user/login`,
             data: bodyFormData,
             headers: {'Content-Type': 'multipart/form-data' }
         }).then(res=>{
