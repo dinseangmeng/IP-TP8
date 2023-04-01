@@ -120,12 +120,14 @@ class userDB{
     async getMe(id){
         const users=await this.read()
         let errMsg="";
+        let isFine=false
         let user =users.filter(item=>{
             if(item.id==id){
                 errMsg=""
+                isFine=true
                 return item
             }else{
-                errMsg="Item not found"
+                if(!isFine) errMsg="Item not found"
                 
             }
         })
