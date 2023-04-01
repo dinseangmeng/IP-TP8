@@ -3,7 +3,7 @@ import { createStore } from 'vuex'
 // Create a new store instance.
 export default createStore({
   state : { 
-    apiUrl:"https://mysterious-cow-buckle.cyclic.app/api"
+    apiUrl:"http://localhost:8000/api"
   },
   mutations: {
 
